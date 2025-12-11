@@ -174,13 +174,20 @@ PYBIND11_MODULE(hough_rectangle, m) {
 
     // Bind utility functions
     m.def("find_local_maximum",
-          &find_local_maximum,
+          [](py::array_t<float> img, float threshold) {
+              auto eigen_img = numpy_to_eigen(img);
+              return find_local_maximum(eigen_img, threshold);
+          },
           py::arg("img"),
           py::arg("threshold"),
           "Find local maxima in the image");
 
     m.def("normalise_img",
-          &normalise_img,
+          [](py::array_t<float> img) {
+              auto eigen_img = numpy_to_eigen(img);
+              normalise_img(eigen_img);
+              return eigen_to_numpy(eigen_img);
+          },
           py::arg("img"),
           "Normalize image to binary 0 and 255");
 
@@ -223,9 +230,12 @@ PYBIND11_MODULE(hough_rectangle, m) {
 
     // Bind IO functions
     m.def("read_image",
-          &eigen_io::read_image,
+          [](const std::string& filename) {
+              auto eigen_mat = eigen_io::read_image(filename);
+              return eigen_to_numpy(eigen_mat);
+          },
           py::arg("filename"),
-          "Load PNG image to Eigen matrix");
+          "Load PNG image to NumPy array");
 
     m.def("save_rectangle_single",
           py::overload_cast<const std::string&, const std::array<int, 8>&>(
