@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=42", "wheel", "cmake>=3.5", "ninja", "numpy>=1.19.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hough-rectangle"
+version = "1.0.0"
+description = "Hough Rectangle Detection - Python bindings for C++ implementation"
+readme = "readme.md"
+requires-python = ">=3.6"
+license = {text = "MIT"}
+authors = [
+    {name = "Original C++ author"}
+]
+keywords = ["hough", "rectangle", "detection", "computer-vision", "image-processing"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: C++",
+    "License :: OSI Approved :: MIT License",
+]
+
+dependencies = [
+    "numpy>=1.19.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/Krankheit/HoughRectangle"
+Repository = "https://github.com/Krankheit/HoughRectangle"
+
+[tool.setuptools]
+include-package-data = true

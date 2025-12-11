@@ -4,3 +4,13 @@ build
 unit_test.png
 rectangle1.png
 .vscode
+
+# Python bindings build artifacts
+*.egg-info/
+dist/
+*.so
+*.pyd
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg
