@@ -45,6 +45,7 @@ add_library(hough_lib STATIC src/recursive_hough_transform.cpp src/eigen_utils.c
     include/recursive_hough_transform.hpp)
 target_include_directories(hough_lib PUBLIC include)
 target_link_libraries(hough_lib  PUBLIC Eigen3::Eigen PUBLIC cereal PRIVATE stb)
+set_target_properties(hough_lib PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
 #----------------------------------------------------------------------------------------------------#
 # Python bindings (optional, only if PYTHON_BINDINGS is set)

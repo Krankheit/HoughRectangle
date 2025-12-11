@@ -184,9 +184,9 @@ PYBIND11_MODULE(hough_rectangle, m) {
 
     m.def("normalise_img",
           [](py::array_t<float> img) {
-              auto eigen_img = numpy_to_eigen(img);
-              normalise_img(eigen_img);
-              return eigen_to_numpy(eigen_img);
+              Eigen::Matrix<float, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor> eigen_mat = numpy_to_eigen(img);
+              normalise_img(eigen_mat);
+              return eigen_to_numpy(eigen_mat);
           },
           py::arg("img"),
           "Normalize image to binary 0 and 255");
