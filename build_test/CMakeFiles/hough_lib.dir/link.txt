@@ -1,2 +1,0 @@
-/usr/bin/ar qc libhough_lib.a CMakeFiles/hough_lib.dir/src/recursive_hough_transform.cpp.o CMakeFiles/hough_lib.dir/src/eigen_utils.cpp.o CMakeFiles/hough_lib.dir/src/rectangle_detection.cpp.o CMakeFiles/hough_lib.dir/src/io.cpp.o CMakeFiles/hough_lib.dir/src/process_image.cpp.o CMakeFiles/hough_lib.dir/src/rectangle_utils.cpp.o
-/usr/bin/ranlib libhough_lib.a

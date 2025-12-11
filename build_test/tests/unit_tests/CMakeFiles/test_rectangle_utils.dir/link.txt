@@ -1,1 +1,0 @@
-/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/test_rectangle_utils.dir/link.d CMakeFiles/test_rectangle_utils.dir/test_rectangle_utils.cpp.o -o test_rectangle_utils  ../../libhough_lib.a

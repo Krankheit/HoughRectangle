@@ -1,1 +1,0 @@
-/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/main_hough_rectangle.dir/link.d CMakeFiles/main_hough_rectangle.dir/main_hough_rectangle.cpp.o -o main_hough_rectangle  ../libhough_lib.a
