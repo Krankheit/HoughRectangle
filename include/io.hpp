@@ -2,6 +2,7 @@
 #define IO_HPP
 #include <Eigen/Dense>
 #include <array>
+#include <memory>
 #include <string>
 #include <vector>
 

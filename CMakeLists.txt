@@ -44,7 +44,23 @@ add_library(hough_lib STATIC src/recursive_hough_transform.cpp src/eigen_utils.c
     src/process_image.cpp src/rectangle_utils.cpp src/rectangle_detection.cpp include/eigen_utils.hpp include/rectangle_detection.hpp include/io.hpp include/config.hpp include/process_image.hpp
     include/recursive_hough_transform.hpp)
 target_include_directories(hough_lib PUBLIC include)
-target_link_libraries(hough_lib  PUBLIC Eigen3::Eigen PUBLIC cereal PRIVATE stb)
+target_link_libraries(hough_lib  PUBLIC Eigen3::Eigen PUBLIC cereal PUBLIC stb)
+set_target_properties(hough_lib PROPERTIES POSITION_INDEPENDENT_CODE ON)
+
+#----------------------------------------------------------------------------------------------------#
+# Python bindings (optional, only if PYTHON_BINDINGS is set)
+#----------------------------------------------------------------------------------------------------#
+option(PYTHON_BINDINGS "Build Python bindings" OFF)
+
+if(PYTHON_BINDINGS)
+    # Add pybind11 subdirectory
+    add_subdirectory(extern/pybind11)
+    
+    # Create Python module
+    pybind11_add_module(hough_rectangle src/python_bindings.cpp)
+    target_link_libraries(hough_rectangle PRIVATE hough_lib)
+    target_include_directories(hough_rectangle PRIVATE include)
+endif()
 
 #----------------------------------------------------------------------------------------------------#
 # Source code

@@ -1,4 +1,14 @@
 # Hough rectangle detection
+
+## Python Library Available! 🐍
+
+This library is now available as a Python package! See [README_PYTHON.md](README_PYTHON.md) for Python installation and usage instructions.
+
+**Quick Python Install:**
+```bash
+pip install .
+```
+
 ## Intro
 This is a personal project which aim is to implemenent a rectangle detection algorithm using the Hough transform from the paper ["Rectangle Detection based on a Windowed Hough Transform"](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.59.4239&rep=rep1&type=pdf) from C.Jung and R.Schramm.  
 
@@ -11,11 +21,21 @@ I plan to bring improvements to the original algorithm in order to make it faste
 The work is currently in progress. Stay tuned!
 
 ## Requirements
-- cmake >3.11.4
+
+### C++ Build
+- cmake >3.5
 - c++ 14
 - Third party libraries are part of the repo: Eigen, catch2, stb, cereal
 
+### Python Build
+- Python >= 3.6
+- NumPy >= 1.19.0
+- CMake >= 3.5
+- C++ compiler with C++14 support
+
 ## Usage
+
+### C++ Usage
 For now, the code only accepts **_png_** images. The input image is expected to be an **_edge detected image_**.  
 
 ```
@@ -25,6 +45,21 @@ cmake ..
 make
 ./apps/main_hough_rectangle -i some_img.png -o output_img.txt
 ```
+
+### Python Usage
+```python
+import hough_rectangle
+import numpy as np
+
+# Create detector
+config = hough_rectangle.Config()
+ht = hough_rectangle.HoughRectangle(100, 256, 256, -90, 90)
+
+# Process edge-detected image
+hough_result = ht.hough_transform(edge_image)
+```
+
+See [README_PYTHON.md](README_PYTHON.md) for complete Python documentation and examples.
 
 The rectangles are saved line by line in the following format: x1,y1,x2,y2,x3,y3,x4,y4
 
